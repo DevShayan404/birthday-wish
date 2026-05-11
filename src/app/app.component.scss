@@ -1,0 +1,264 @@
+main {
+  display: block;
+}
+
+.stack {
+  position: relative;
+}
+
+.stack-item {
+  position: sticky;
+  top: 0;
+  min-height: 100dvh;
+  overflow: visible;
+}
+
+.stack-content {
+  width: 100%;
+  height: 100%;
+  will-change: transform, opacity;
+  transform-origin: center 30%;
+  backface-visibility: hidden;
+}
+
+/* ==================== Footer / Closing Section ==================== */
+
+.site-footer {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.5rem 3.5rem;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 220, 230, 0.6), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(240, 196, 128, 0.32), transparent 55%),
+    linear-gradient(180deg, #fff1f4 0%, #ffe9ee 50%, #fdd9e3 100%);
+  color: var(--wine-700);
+  border-top: 1px solid rgba(212, 165, 116, 0.35);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.footer-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 720px;
+  height: 720px;
+  background:
+    radial-gradient(circle, rgba(212, 88, 127, 0.18) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  animation: glow-pulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes glow-pulse {
+  from { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  to   { opacity: 1;   transform: translate(-50%, -50%) scale(1.15); }
+}
+
+.footer-petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  bottom: -10%;
+  color: var(--rose-500);
+  opacity: 0.45;
+  animation: petal-rise linear infinite;
+  text-shadow: 0 2px 6px rgba(212, 88, 127, 0.3);
+}
+
+@keyframes petal-rise {
+  0%   { transform: translateY(0) rotate(0deg) scale(0.6); opacity: 0; }
+  20%  { opacity: 0.55; }
+  100% { transform: translateY(-120vh) rotate(360deg) scale(1.1); opacity: 0; }
+}
+
+.footer-content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: footer-fade-in 1s var(--ease-out) both;
+}
+
+@keyframes footer-fade-in {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 0 0 1rem;
+}
+.ornament span {
+  display: block;
+  width: 70px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+}
+.ornament em {
+  font-style: normal;
+  color: var(--rose-500);
+  font-size: 1.1rem;
+  display: inline-block;
+  animation: pulse-heart 1.6s ease-in-out infinite;
+}
+.ornament.dual {
+  margin: 1.5rem 0 1.5rem;
+}
+.ornament.dual em {
+  font-size: 1.4rem;
+  color: var(--rose-700);
+}
+
+@keyframes pulse-heart {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+.eyebrow {
+  font-family: var(--font-script);
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  color: var(--rose-700);
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.02em;
+  font-style: italic;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.05;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.title .line-1 {
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
+  color: var(--wine-700);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.title .line-2 {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: clamp(2.8rem, 9vw, 5.2rem);
+  line-height: 1.35;
+  padding-bottom: 0.18em;
+  background: linear-gradient(135deg, var(--rose-500) 0%, var(--gold-700) 50%, var(--rose-700) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.01em;
+  filter: drop-shadow(0 6px 24px rgba(212, 88, 127, 0.3));
+  animation: title-glow 4s ease-in-out infinite alternate;
+  overflow: visible;
+}
+
+@keyframes title-glow {
+  from { filter: drop-shadow(0 4px 18px rgba(212, 88, 127, 0.25)); }
+  to   { filter: drop-shadow(0 10px 36px rgba(212, 165, 116, 0.5)); }
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  color: rgba(74, 29, 63, 0.75);
+  margin: 1.25rem 0 0;
+  font-style: italic;
+  max-width: 480px;
+}
+
+.signature-card {
+  margin-top: 0.5rem;
+  padding: 1.5rem 2rem;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(252, 232, 236, 0.55) 100%);
+  border: 1px solid rgba(212, 165, 116, 0.4);
+  border-radius: 18px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 16px 38px rgba(74, 29, 63, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.signature-card::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+}
+
+.sig-line {
+  font-family: var(--font-script);
+  font-size: clamp(1.15rem, 2.6vw, 1.4rem);
+  color: var(--wine-700);
+  margin: 0 0 0.4rem;
+  font-style: italic;
+}
+
+.sig-name {
+  font-family: var(--font-script);
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  color: var(--rose-700);
+  margin: 0;
+  font-weight: 700;
+}
+
+.footnote {
+  margin-top: 2rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(74, 29, 63, 0.5);
+}
+
+@media (max-width: 768px) {
+  .site-footer { padding: 3rem 1.1rem 2.5rem; min-height: 90vh; }
+  .footer-glow { width: 460px; height: 460px; }
+  .ornament span { width: 48px; }
+  .ornament.dual { margin: 1.1rem 0; }
+  .signature-card { padding: 1.3rem 1.4rem; max-width: 100%; }
+  .subtitle { margin: 1rem 0 0; padding: 0 0.5rem; }
+  .footnote { margin-top: 1.5rem; font-size: 0.7rem; letter-spacing: 0.18em; }
+  .title .line-1 { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+  .title .line-2 { font-size: clamp(2.4rem, 12vw, 3.5rem); padding-bottom: 0.22em; }
+}
+
+@media (max-width: 480px) {
+  .site-footer { padding: 2.4rem 0.9rem 2.2rem; }
+  .footer-glow { width: 320px; height: 320px; }
+  .ornament span { width: 36px; }
+  .signature-card { padding: 1.1rem 1.1rem; border-radius: 14px; }
+  .sig-line { font-size: 1.05rem; }
+  .sig-name { font-size: 1.3rem; }
+}

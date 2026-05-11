@@ -1,0 +1,233 @@
+.letter-section {
+  height: 100vh;
+  padding: var(--section-pad-y) var(--section-pad-x) var(--section-pad-y-tight);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 143, 163, 0.24),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(240, 196, 128, 0.24),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #fff1f4 0%, #fff6f8 100%);
+}
+
+.heading {
+  text-align: center;
+  width: min(100%, var(--section-content-max));
+  margin-inline: auto;
+  margin-bottom: 1.8rem;
+}
+
+.eyebrow {
+  font-family: var(--font-script);
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  color: var(--rose-700);
+  margin: 0;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--wine-700);
+  font-weight: 700;
+  margin: 0.25rem 0 0;
+}
+
+.paper {
+  position: relative;
+  width: 100%;
+  max-width: 1020px;
+  background: linear-gradient(180deg, #fffaf5 0%, #f5e6d3 100%);
+  border-radius: 4px;
+  padding: 3.5rem 3rem;
+  box-shadow:
+    0 30px 70px rgba(74, 29, 63, 0.22),
+    0 0 0 1px rgba(212, 165, 116, 0.4) inset,
+    0 0 0 8px rgba(255, 255, 255, 0.6);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 32px,
+    rgba(212, 88, 127, 0.12) 33px
+  );
+  transform: rotate(-0.5deg);
+  animation: paper-in 1s ease-out both;
+}
+
+.paper::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  right: 50px;
+  bottom: 30px;
+  border: 1px dashed rgba(212, 165, 116, 0.5);
+  pointer-events: none;
+  border-radius: 2px;
+}
+
+.paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(245, 230, 211, 0.3),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(252, 232, 236, 0.3),
+      transparent 40%
+    );
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+.tape {
+  position: absolute;
+  width: 80px;
+  height: 26px;
+  background: linear-gradient(
+    135deg,
+    rgba(232, 200, 158, 0.55),
+    rgba(245, 230, 211, 0.55)
+  );
+  top: -12px;
+  border-left: 1px dashed rgba(184, 137, 92, 0.3);
+  border-right: 1px dashed rgba(184, 137, 92, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.tape-l {
+  left: 40px;
+  transform: rotate(-8deg);
+}
+.tape-r {
+  right: 40px;
+  transform: rotate(8deg);
+}
+
+@keyframes paper-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px) rotate(-2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-0.5deg);
+  }
+}
+
+.paper-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.text {
+  font-family: var(--font-script);
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  line-height: 1.85;
+  color: var(--wine-700);
+  margin: 0;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  min-height: 320px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: var(--rose-700);
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  animation: blink 0.9s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.seal {
+  position: absolute;
+  bottom: -32px;
+  right: -28px;
+  width: 76px;
+  height: 76px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    var(--rose-500),
+    var(--rose-700) 60%,
+    var(--wine-700)
+  );
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  font-family: var(--font-display);
+  box-shadow:
+    0 14px 30px rgba(176, 64, 104, 0.45),
+    inset 0 -4px 8px rgba(45, 15, 36, 0.3),
+    inset 0 4px 8px rgba(255, 255, 255, 0.2);
+  transform: rotate(15deg);
+  animation: seal-pulse 2.5s ease-in-out infinite;
+}
+
+.seal::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1.5px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+@keyframes seal-pulse {
+  0%,
+  100% {
+    transform: rotate(15deg) scale(1);
+  }
+  50% {
+    transform: rotate(15deg) scale(1.06);
+  }
+}
+
+@media (max-width: 520px) {
+  .letter-section {
+    padding: 2.7rem 1rem 2.3rem;
+  }
+  .heading {
+    margin-bottom: 1.2rem;
+  }
+  .paper {
+    padding: 2.1rem 1.25rem;
+  }
+  .paper::before {
+    left: 24px;
+    right: 24px;
+    top: 24px;
+    bottom: 24px;
+  }
+  .seal {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    bottom: -22px;
+    right: -16px;
+  }
+  .tape {
+    width: 60px;
+  }
+}

@@ -1,0 +1,38 @@
+<section class="gallery-section" id="gallery">
+  <div class="heading">
+    <p class="eyebrow">Polaroid Memories</p>
+    <h2>Captured moments</h2>
+    <p class="subtitle">Tap any photo to expand</p>
+  </div>
+
+  <div class="reel-wrap">
+    <div class="reel">
+      <button
+        *ngFor="let p of photos(); let i = index"
+        class="polaroid"
+        [style.transform]="'rotate(' + p.rotate + 'deg)'"
+        (click)="open(i, $event)"
+        [attr.aria-label]="'Open photo: ' + p.caption"
+      >
+        <div class="frame">
+          <div class="photo" [style.background]="p.gradient">
+            <img *ngIf="p.src" [src]="p.src" [alt]="p.caption" />
+            <span class="emoji" *ngIf="!p.src">{{ p.emoji }}</span>
+            <span class="shine"></span>
+          </div>
+          <div class="caption">
+            <span class="cap-text">{{ p.caption }}</span>
+            <span class="cap-date">{{ p.date }}</span>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <p class="hint-line">
+    <span class="line"></span>
+    <em>Tap a photo to see it bigger</em>
+    <span class="line"></span>
+  </p>
+</section>
+

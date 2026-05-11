@@ -1,0 +1,53 @@
+<section class="memories-section" id="memories">
+  <div class="heading">
+    <p class="eyebrow">Memories</p>
+    <h2>A walk through us</h2>
+    <p class="subtitle">Every moment tells a story 💫</p>
+  </div>
+
+  <div
+    class="carousel"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    <button class="nav prev" (click)="prev()" aria-label="Previous memory">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+
+    <div class="track">
+      <article
+        *ngFor="let m of memories(); let i = index"
+        class="card"
+        [class.active]="i === current()"
+        [class.prev]="i === (current() - 1 + memories().length) % memories().length"
+        [class.next]="i === (current() + 1) % memories().length"
+        [style.background]="m.gradient"
+      >
+        <div class="card-inner">
+          <span class="year-badge">{{ m.year }}</span>
+          <span class="emoji">{{ m.emoji }}</span>
+          <h3>{{ m.title }}</h3>
+          <p>{{ m.caption }}</p>
+        </div>
+      </article>
+    </div>
+
+    <button class="nav next" (click)="next()" aria-label="Next memory">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 6l6 6-6 6"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="dots" role="tablist">
+    <button
+      *ngFor="let m of memories(); let i = index"
+      class="dot"
+      [class.active]="i === current()"
+      (click)="goTo(i)"
+      [attr.aria-label]="'Go to memory ' + (i + 1)"
+    ></button>
+  </div>
+</section>

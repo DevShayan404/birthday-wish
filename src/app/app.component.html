@@ -1,0 +1,94 @@
+<app-countdown
+  *ngIf="!unlocked()"
+  (complete)="onCountdownComplete()"
+></app-countdown>
+
+<ng-container *ngIf="unlocked()">
+  <app-sparkles></app-sparkles>
+  <app-confetti></app-confetti>
+  <app-music-toggle></app-music-toggle>
+  <app-section-nav></app-section-nav>
+  <app-lightbox></app-lightbox>
+
+  <main class="stack">
+    <section class="stack-item">
+      <div class="stack-content">
+        <app-hero (begin)="scrollTo('cake')"></app-hero>
+      </div>
+    </section>
+
+    <section class="stack-item">
+      <div class="stack-content">
+        <app-cake (allBlown)="onCakeBlown()"></app-cake>
+      </div>
+    </section>
+
+    <section class="stack-item">
+      <div class="stack-content">
+        <app-memories></app-memories>
+      </div>
+    </section>
+
+    <section class="stack-item">
+      <div class="stack-content">
+        <app-gallery></app-gallery>
+      </div>
+    </section>
+
+    <section class="stack-item">
+      <div class="stack-content">
+        <app-letter></app-letter>
+      </div>
+    </section>
+
+    <section class="stack-item">
+      <div class="stack-content">
+        <app-gift (opened)="onGiftOpened()"></app-gift>
+      </div>
+    </section>
+
+    <footer class="site-footer" id="footer-end">
+      <div class="footer-glow" aria-hidden="true"></div>
+
+      <div class="footer-petals" aria-hidden="true">
+        <span
+          class="petal"
+          *ngFor="
+            let p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            let i = index
+          "
+          [style.left.%]="i * 8.3 + (i % 2 ? 2 : -1)"
+          [style.animation-delay.s]="i * 0.6"
+          [style.animation-duration.s]="9 + (i % 5)"
+          [style.font-size.px]="14 + (i % 4) * 6"
+          >❀</span
+        >
+      </div>
+
+      <div class="footer-content">
+        <div class="ornament top"><span></span><em>✦</em><span></span></div>
+        <p class="eyebrow">The end of this little journey</p>
+        <h2 class="title">
+          <span class="line-1">Happy Birthday</span>
+          <span class="line-2">my forever</span>
+        </h2>
+        <p class="subtitle">
+          May every star in your sky shine just for you tonight ✨
+        </p>
+
+        <div class="ornament dual">
+          <span></span>
+          <em>♥</em>
+          <span></span>
+        </div>
+
+        <div class="signature-card">
+          <p class="sig-line">With every beat of my heart,</p>
+          <p class="sig-name">— Your Forever</p>
+        </div>
+
+        <p class="footnote">Made with love · just for you</p>
+      </div>
+    </footer>
+  </main>
+</ng-container>

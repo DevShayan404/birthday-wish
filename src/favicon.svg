@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff8fa3"/>
+      <stop offset="50%" stop-color="#d4587f"/>
+      <stop offset="100%" stop-color="#6b2853"/>
+    </linearGradient>
+    <linearGradient id="shineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path
+    d="M32 56C32 56 8 40.5 8 24C8 15.7157 14.7157 9 23 9C27.4 9 31.4 11 32 14C32.6 11 36.6 9 41 9C49.2843 9 56 15.7157 56 24C56 40.5 32 56 32 56Z"
+    fill="url(#heartGrad)"
+    stroke="#4a1d3f"
+    stroke-width="1.5"
+    stroke-linejoin="round"/>
+  <path
+    d="M22 16C18 18 15 22 14.5 27"
+    stroke="url(#shineGrad)"
+    stroke-width="3.5"
+    stroke-linecap="round"
+    fill="none"/>
+</svg>

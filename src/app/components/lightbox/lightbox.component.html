@@ -1,0 +1,32 @@
+<div class="lightbox" *ngIf="isOpen() && current() as p" (click)="close()" role="dialog" aria-modal="true">
+  <button class="lb-close" (click)="close($event)" aria-label="Close">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 6l12 12M18 6L6 18"/>
+    </svg>
+  </button>
+
+  <button class="lb-nav lb-prev" (click)="prev($event)" aria-label="Previous">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </button>
+
+  <div class="lb-stage" (click)="stop($event)">
+    <div class="lb-frame" [style.transform]="'rotate(' + (p.rotate / 2) + 'deg)'">
+      <div class="lb-photo" [style.background]="p.gradient">
+        <img *ngIf="p.src" [src]="p.src" [alt]="p.caption" />
+        <span class="lb-emoji" *ngIf="!p.src">{{ p.emoji }}</span>
+      </div>
+      <div class="lb-caption">
+        <span class="cap-text">{{ p.caption }}</span>
+        <span class="cap-date">{{ p.date }}</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="lb-nav lb-next" (click)="next($event)" aria-label="Next">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 6l6 6-6 6"/>
+    </svg>
+  </button>
+</div>

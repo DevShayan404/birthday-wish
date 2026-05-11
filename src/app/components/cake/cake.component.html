@@ -1,0 +1,55 @@
+<section class="cake-section" id="cake">
+  <div class="heading">
+    <p class="eyebrow">Make a wish</p>
+    <h2>Blow out the candles</h2>
+    <p class="hint" [class.done]="wishMade()">
+      {{ wishMade() ? 'Close your eyes and make a wish from your heart ✨' : 'Tap each candle to blow it out 🕯️' }}
+    </p>
+  </div>
+
+  <div class="cake-wrap">
+    <div class="cake">
+      <div class="candles">
+        <button
+          *ngFor="let c of candles(); let i = index"
+          class="candle"
+          [class.out]="!c.lit"
+          (click)="blowCandle(i)"
+          [attr.aria-label]="'Candle ' + (i + 1) + (c.lit ? ' lit' : ' blown out')"
+        >
+          <span class="flame" *ngIf="c.lit">
+            <span class="flame-inner"></span>
+          </span>
+          <span class="wick"></span>
+          <span class="wax" [style.background]="'linear-gradient(180deg, hsl(' + c.hue + ', 85%, 75%), hsl(' + c.hue + ', 75%, 55%))'"></span>
+          <span class="smoke" *ngIf="!c.lit"></span>
+        </button>
+      </div>
+
+      <div class="tier tier-top">
+        <div class="frosting-top"></div>
+        <div class="cherries">
+          <span class="cherry"></span>
+          <span class="cherry"></span>
+          <span class="cherry"></span>
+          <span class="cherry"></span>
+        </div>
+        <div class="drips">
+          <span *ngFor="let d of [1,2,3,4,5,6,7,8]"></span>
+        </div>
+      </div>
+      <div class="tier tier-bottom">
+        <div class="lace"></div>
+        <div class="dots">
+          <span *ngFor="let d of [1,2,3,4,5,6,7,8,9,10,11,12]"></span>
+        </div>
+      </div>
+      <div class="plate"></div>
+    </div>
+  </div>
+
+  <div class="actions" *ngIf="wishMade()">
+    <p class="celebrate">🎉 Wish made! May everything you dreamed of come true 💫</p>
+    <button class="relight" (click)="relight()">Relight Candles</button>
+  </div>
+</section>

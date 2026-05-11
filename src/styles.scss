@@ -1,0 +1,158 @@
+:root {
+  /* Crimson red + ruby + warm gold palette */
+  --wine-900: #2a0a12;
+  --wine-700: #571425;
+  --wine-500: #7f2238;
+  --rose-700: #b71f3b;
+  --rose-500: #e63956;
+  --rose-300: #ff8fa3;
+  --rose-100: #ffd9df;
+  --gold-700: #a86a2a;
+  --gold-500: #d8923a;
+  --gold-300: #f0c480;
+  --champagne: #f8e7d0;
+  --blush: #ffe9ee;
+  --cream: #fff4f6;
+  --ivory: #fff9fa;
+  --plum: var(--wine-700);
+  --ink: var(--wine-900);
+
+  --shadow-sm: 0 4px 14px rgba(42, 10, 18, 0.1);
+  --shadow-md: 0 12px 40px rgba(42, 10, 18, 0.16);
+  --shadow-lg: 0 24px 70px rgba(42, 10, 18, 0.22);
+  --shadow-glow: 0 0 40px rgba(230, 57, 86, 0.3);
+
+  --gradient-rose: linear-gradient(135deg, var(--rose-500), var(--gold-500));
+  --gradient-wine: linear-gradient(135deg, var(--wine-700), var(--rose-700));
+  --gradient-romance: linear-gradient(135deg, #e63956 0%, #b71f3b 52%, #571425 100%);
+  --gradient-ambient: radial-gradient(circle at 15% 20%, rgba(255, 143, 163, 0.28), transparent 42%),
+    radial-gradient(circle at 85% 18%, rgba(240, 196, 128, 0.3), transparent 45%),
+    radial-gradient(circle at 50% 84%, rgba(127, 34, 56, 0.14), transparent 48%);
+
+  --font-display: 'Playfair Display', 'Cormorant Garamond', serif;
+  --font-script: 'Dancing Script', cursive;
+  --font-body: 'Poppins', system-ui, sans-serif;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.4, 1.6, 0.4, 1);
+  --section-pad-y-desktop: clamp(3.5rem, 7vh, 5rem);
+  --section-pad-y-mobile: clamp(2.5rem, 5vh, 3.5rem);
+  --section-pad-y: var(--section-pad-y-desktop);
+  --section-pad-y-tight: var(--section-pad-y-mobile);
+  --section-pad-x: clamp(1rem, 2.5vw, 1.5rem);
+  --section-content-max: 760px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--cream);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow-x: hidden;
+  background:
+    var(--gradient-ambient),
+    linear-gradient(180deg, #fff9fa 0%, #fff4f6 45%, #ffe9ee 100%);
+  background-attachment: fixed;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    radial-gradient(rgba(230, 57, 86, 0.11) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(216, 146, 58, 0.08) 0.5px, transparent 0.5px);
+  background-size: 24px 24px, 30px 30px;
+  background-position: 0 0, 12px 16px;
+  opacity: 0.35;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--rose-300);
+  color: var(--wine-900);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--rose-500), var(--gold-500));
+  border-radius: 999px;
+  border: 2px solid var(--cream);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============== Mobile-tuned global tokens ============== */
+
+@media (max-width: 768px) {
+  :root {
+    --section-pad-y: 2.4rem;
+    --section-pad-y-tight: 1.8rem;
+    --section-pad-x: 1rem;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-thumb { border: none; }
+
+  body::before { background-size: 18px 18px, 22px 22px; }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-pad-y: 2rem;
+    --section-pad-y-tight: 1.4rem;
+    --section-pad-x: 0.9rem;
+  }
+}
+
+/* iOS safe-area handling */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

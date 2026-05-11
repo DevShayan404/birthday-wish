@@ -1,0 +1,60 @@
+<section class="countdown" [class.ready]="ready()">
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <div class="petals" aria-hidden="true">
+    <span
+      *ngFor="let p of petals"
+      class="petal"
+      [style.left.%]="p.left"
+      [style.animation-delay.s]="p.delay"
+      [style.animation-duration.s]="p.duration"
+      [style.font-size.px]="p.size"
+    >❀</span>
+  </div>
+
+  <div class="content">
+    <div class="ornament-line"><span></span><em>✦</em><span></span></div>
+
+    <p class="eyebrow">Counting down to</p>
+    <h1 class="title">
+      <span class="line-1">A very special day</span>
+      <span class="line-2">May 20<sup>th</sup></span>
+    </h1>
+
+    <div class="timer" role="timer" aria-live="polite">
+      <div class="unit">
+        <div class="cell">
+          <span class="num">{{ pad(days()) }}</span>
+        </div>
+        <span class="label">Days</span>
+      </div>
+      <span class="sep">:</span>
+      <div class="unit">
+        <div class="cell">
+          <span class="num">{{ pad(hours()) }}</span>
+        </div>
+        <span class="label">Hours</span>
+      </div>
+      <span class="sep">:</span>
+      <div class="unit">
+        <div class="cell">
+          <span class="num">{{ pad(minutes()) }}</span>
+        </div>
+        <span class="label">Minutes</span>
+      </div>
+      <span class="sep">:</span>
+      <div class="unit">
+        <div class="cell">
+          <span class="num seconds">{{ pad(seconds()) }}</span>
+        </div>
+        <span class="label">Seconds</span>
+      </div>
+    </div>
+
+    <p class="footnote">Almost time, my love &nbsp;·&nbsp; A surprise awaits 💗</p>
+  </div>
+</section>

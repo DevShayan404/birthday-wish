@@ -1,0 +1,48 @@
+<section class="gift-section" id="gift">
+  <div class="heading">
+    <p class="eyebrow">One last surprise</p>
+    <h2>{{ isOpen() ? 'You are my greatest blessing' : 'Open your gift' }}</h2>
+    <p class="hint" *ngIf="!isOpen()">Tap the box 🎁</p>
+  </div>
+
+  <div class="stage" [class.open]="isOpen()">
+    <button
+      class="gift-box"
+      (click)="open()"
+      [disabled]="isOpen()"
+      [attr.aria-label]="isOpen() ? 'Gift opened' : 'Open gift'"
+    >
+      <div class="lid">
+        <div class="ribbon-v"></div>
+        <div class="bow">
+          <span class="bow-l"></span>
+          <span class="bow-r"></span>
+          <span class="bow-c"></span>
+        </div>
+      </div>
+      <div class="box">
+        <div class="ribbon-v"></div>
+        <div class="ribbon-h"></div>
+      </div>
+    </button>
+
+    <div class="surprise" *ngIf="isOpen()">
+      <div class="card">
+        <span class="corner corner-tl"></span>
+        <span class="corner corner-tr"></span>
+        <span class="corner corner-bl"></span>
+        <span class="corner corner-br"></span>
+        <p class="card-eyebrow">For my forever</p>
+        <h3>I love you, today and always</h3>
+        <p class="card-text">
+          In every life, in every world,<br>
+          I would still search for you.<br>
+          You are the most beautiful<br>
+          word in my story.
+        </p>
+        <div class="divider"></div>
+        <div class="signature">— Yours, forever and always</div>
+      </div>
+    </div>
+  </div>
+</section>
